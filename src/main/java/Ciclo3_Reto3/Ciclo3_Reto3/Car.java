@@ -39,7 +39,7 @@ public class Car implements Serializable {
     private Gama gama;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "car")
-    @JsonIgnoreProperties("car")
+    @JsonIgnoreProperties({"car", "client"})
     private List<Message> messages;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "car")

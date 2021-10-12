@@ -5,6 +5,7 @@
 package Ciclo3_Reto3.Ciclo3_Reto3;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,15 +20,23 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "score")
 public class Score {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idScore;
     private Integer score;
-    
-   
 
-    
+    @OneToOne(mappedBy = "score")
+    @JsonIgnoreProperties("score")
+    private Reservation reservation;
+
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
 
     public Integer getIdScore() {
         return idScore;
