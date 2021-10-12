@@ -25,10 +25,19 @@ public class Score {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idScore;
     private Integer score;
+    private String messageText;
 
     @OneToOne(mappedBy = "score")
     @JsonIgnoreProperties("score")
     private Reservation reservation;
+
+    public String getMessageText() {
+        return messageText;
+    }
+
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
+    }
 
     public Reservation getReservation() {
         return reservation;
