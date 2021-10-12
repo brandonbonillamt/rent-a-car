@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author DELL - PC
  */
 @RestController
-@RequestMapping("/Score")
+@RequestMapping("api/Score")
 public class ScoreController {
     
     @Autowired

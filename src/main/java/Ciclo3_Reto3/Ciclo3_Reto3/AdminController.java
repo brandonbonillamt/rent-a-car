@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author DELL - PC
  */
 @RestController
-@RequestMapping("/Admin")
+@RequestMapping("api/Admin")
 public class AdminController {
     
     @Autowired

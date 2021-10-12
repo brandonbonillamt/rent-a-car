@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author DELL - PC
  */
 @RestController
-@RequestMapping("/Gama")
+@RequestMapping("api/Gama")
 public class GamaController {
     
     @Autowired

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author DELL - PC
  */
 @RestController
-@RequestMapping("/Reservation")
+@RequestMapping("api/Reservation")
 public class ReservationController {
     
     @Autowired

@@ -18,34 +18,61 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- *
- * @author DELL - PC
+ * Entidad para el procesamiento de carros
+ * @author BRANDARG
  */
 @Entity
 @Table(name = "car")
 public class Car implements Serializable {
 
+    /**
+     * La id del carro
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCar;
+
+    /**
+     * El nombre del carro
+     */
     private String name;
+    
+    /**
+     * La marca del carro
+     */
     private String brand;
+    
+    /**
+     * Año del modelo del carro
+     */
     private Integer year;
+    
+    /**
+     * Descripcion del carro
+     */
     private String description;
 
+    /**
+     * Relacion muchos a uno entre carro y gama
+     */
     @ManyToOne
     @JoinColumn(name = "idGama")
     @JsonIgnoreProperties("cars")
     private Gama gama;
-    
+
+    /**
+     * Relacion uno a muchos entre carro y mensaje
+     */
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "car")
     @JsonIgnoreProperties({"car", "client"})
     private List<Message> messages;
-    
+
+    /**
+     * Relacion uno a muchos entre carro y reservacion
+     */
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "car")
     @JsonIgnoreProperties("car")
     private List<Reservation> reservations;
-    
 
     public List<Message> getMessages() {
         return messages;
@@ -62,8 +89,6 @@ public class Car implements Serializable {
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
-    
-    
 
     public Integer getIdCar() {
         return idCar;

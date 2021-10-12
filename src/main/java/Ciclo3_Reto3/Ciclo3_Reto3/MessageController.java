@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author DELL - PC
  */
 @RestController
-@RequestMapping("/Message")
+@RequestMapping("api/Message")
 public class MessageController {
     
     @Autowired
