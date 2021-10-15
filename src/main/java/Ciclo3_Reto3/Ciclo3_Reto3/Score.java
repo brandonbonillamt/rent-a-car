@@ -4,12 +4,17 @@
  */
 package Ciclo3_Reto3.Ciclo3_Reto3;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,28 +29,13 @@ public class Score {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idScore;
-    private Integer score;
+    private Integer stars;
     private String messageText;
-
-    @OneToOne(mappedBy = "score")
-    @JsonIgnoreProperties("score")
+    
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "idReservation")
+    @JsonBackReference
     private Reservation reservation;
-
-    public String getMessageText() {
-        return messageText;
-    }
-
-    public void setMessageText(String messageText) {
-        this.messageText = messageText;
-    }
-
-    public Reservation getReservation() {
-        return reservation;
-    }
-
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
-    }
 
     public Integer getIdScore() {
         return idScore;
@@ -55,11 +45,19 @@ public class Score {
         this.idScore = idScore;
     }
 
-    public Integer getScore() {
-        return score;
+    public Integer getStars() {
+        return stars;
     }
 
-    public void setScore(Integer score) {
-        this.score = score;
+    public void setStars(Integer stars) {
+        this.stars = stars;
+    }
+
+    public String getMessageText() {
+        return messageText;
+    }
+
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
     }
 }

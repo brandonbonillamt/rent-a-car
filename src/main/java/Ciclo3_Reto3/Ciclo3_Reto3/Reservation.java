@@ -5,9 +5,9 @@
 package Ciclo3_Reto3.Ciclo3_Reto3;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,8 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -26,7 +26,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "reservation")
 public class Reservation implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
@@ -38,15 +38,14 @@ public class Reservation implements Serializable {
     @JoinColumn(name = "idCar")
     @JsonIgnoreProperties("reservations")
     private Car car;
-    
+
     @ManyToOne
     @JoinColumn(name = "idClient")
     @JsonIgnoreProperties({"reservations", "messages"})
     private Client client;
-    
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "idScore")
-    @JsonIgnoreProperties("reservation")
+
+    @OneToOne(mappedBy = "reservation")
+    @JsonManagedReference
     private Score score;
 
     public String getStatus() {
@@ -56,16 +55,6 @@ public class Reservation implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    public Score getScore() {
-        return score;
-    }
-
-    public void setScore(Score score) {
-        this.score = score;
-    }
-    
-    
 
     public Integer getIdReservation() {
         return idReservation;
