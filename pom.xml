@@ -8,11 +8,11 @@
 		<version>2.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>Ciclo3_Reto3</groupId>
-	<artifactId>Ciclo3_Reto3</artifactId>
+	<groupId>co.edu.usa</groupId>
+	<artifactId>RentACarBackend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Ciclo3_Reto3</name>
-	<description>Demo project for Spring Boot</description>
+	<name>RentACarBackend</name>
+	<description>Backend para el proyecto Rent a Car</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -47,11 +47,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-                <dependency>
-                        <groupId>org.apache.httpcomponents</groupId>
-                        <artifactId>httpclient</artifactId>
-                        <scope>test</scope>
-                </dependency>
 	</dependencies>
 
 	<build>
